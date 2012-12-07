@@ -1,60 +1,57 @@
-This section shows how a metal/PEC is introduced into CSX. 
+This section shows how a metal/PEC material is introduced into
+ \hyperref[CSX]{\matv{CSX}}.
+ 
+\begin{FontNameFunct}{AddMetal}
+\end{FontNameFunct}
 
-\textcolor{blue}{\begin{large}\textbf{AddMetal}\end{large}}\\
-\textcolor{blue}{\begin{large}Syntax:\end{large}}
-
+\begin{FontDescr}{Syntax:}
   \begin{lstlisting}
  CSX = AddMetal(CSX, name)
   \end{lstlisting}
-  
-\textcolor{blue}{\begin{large}Description:\end{large}}\\
-This function introduces perfect electric conductor of no loss into CSX.\\
-\hyperref[para:CSX]{\texttt{CSX}} 
- \begin{myindentpar}\hyperref[para:CSX]{\texttt{CSX}} describes geometrical objects and their physical or non-physical properties in .xml file.
- \end{myindentpar} 
- \texttt{name} 
- \begin{myindentpar}{\texttt{name}} is given by user and must be matched with that is mentioned in the syntax for defining CSXprimitives~\ref{CSXprimitives}.  
- \end{myindentpar} 
+\end{FontDescr}  
 
- If a lossy conducting material is preferred,then the following function is recommended:  
+\begin{FontDescr}{Description:}
+This function introduces perfect electric conductor of no loss into \hyperref[CSX]{\matv{CSX}}.
+\end{FontDescr}
+
  
-\textcolor{blue}{\begin{large}\textbf{AddConductingSheet}\end{large}}\\
+\begin{FontNameFunct}{AddConductingSheet}
+\end{FontNameFunct}
 
-\textcolor{blue}{\begin{large}Syntax:\end{large}}
+\begin{FontDescr}{Purpose:}
+To add a lossy conducting material into \hyperref[CSX]{\matv{CSX}}.
+\end{FontDescr}
 
+\begin{FontDescr}{Syntax:}
   \begin{lstlisting}
 CSX = AddConductingSheet(CSX, name, conductivity, thickness)
   \end{lstlisting}
-  
-\textcolor{blue}{\begin{large}Description:\end{large}}\\ 
-\hyperref[para:CSX]{\texttt{CSX}} 
- \begin{myindentpar}\hyperref[para:CSX]{\texttt{CSX}} describes geometrical objects and their physical or non-physical properties in .xml file.
- \end{myindentpar} 
- \texttt{name} 
- \begin{myindentpar}{\texttt{name}} is given by user and must be matched with that is mentioned in the syntax for defining CSXprimitives\ref{CSXprimitives}.  
- \end{myindentpar} 
- \texttt{conductivity} 
- \begin{myindentpar} It is given by user according to the conductivity of metal being used. The most frequent used metal is copper and its conductivity is 58e6$Sm^{-1}$.    
- \end{myindentpar}
- \texttt{thickness} 
- \begin{myindentpar} it defines the thickness of metal sheet.     
- \end{myindentpar}
+\end{FontDescr} 
 
-\textcolor{blue}{\begin{large}Examples:\end{large}}\\  
+\begin{FontDescr}{Description:}
+
+\begin{FontPara}{conductivity}
+It is given by user according to the conductivity of metal being used. The most frequent used metal is copper and its conductivity is 58e6$Sm^{-1}$.    
+\end{FontPara}
+
+ \begin{FontPara}{thickness}
+ It defines the thickness of lossy metal sheet.     
+ \end{FontPara}
+\end{FontDescr} 
+
+\begin{FontDescr}{Examples:} 
 
 \begin{lstlisting} 
 CSX = AddMetal(CSX,'metal'); 
 \end{lstlisting}
-
-This syntax adds PEC material into CSX with the name 'metal'. 
+This syntax adds PEC material into \hyperref[CSX]{\matv{CSX}} with the name 'metal'. \\
 
 \begin{lstlisting} 
 CSX = AddConductingSheet(CSX,'copper',56e6,70e-6);
 \end{lstlisting}
+This syntax adds a conducting sheet of 70$\mu$m into \hyperref[CSX]{\matv{CSX}}. The assigned metal is named copper and has conductivity of 58e6$Sm^{-1}$.  
 
-This syntax adds a conducting sheet of 70$\mu$m into CSX. The assigned metal is named copper and has conductivity of 58e6$Sm^{-1}$.  
-
- 
+ \end{FontDescr} 
  
  
  
