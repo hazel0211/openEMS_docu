@@ -1,12 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%section Attributes of FDTD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Initiation of FDTD} \label{sec:FDTD_ATTRIBUTE}
+\section{Initiation of \matv{FDTD}} \label{sec:FDTD_ATTRIBUTE}
 \phantomsection \label{para:FDTD_ATTRIBUTE}
 This section shows how to initiate the structure \matv{FDTD} with some given attributes.
  
-%%%%%%%%%%%%%%%%%%%%%%% FUNCTION  InitFDTD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%%%%%%%%%%%%%%% FUNCTION InitFDTD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \begin{FontNameFunct}{InitFDTD()}
-\phantomsection \label{func:InitFDTD} 
+\phantomsection \label{func:InitFDTD}
 \end{FontNameFunct}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Purpose
@@ -26,7 +26,7 @@ FDTD = InitFDTD(NrTS,endCrit,varargin)
 % \end{FontNameDescr}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Description
 \begin{FontDescr}{Description:}
-Return value of this function is a initial structure  \matv{FDTD}. A group of parameters about the algorithm FDTD can be assigned by this function. This group of parameters are about end  simulation criteria respectively  using time, time-steps (default=1e9) or energy (default=1e-5). Furthermore, Nyquist oversampling of time domain dump, coordinate system and multi-grids \cite{EC_FDTD_CYL_THORSTEN} can be also set by this function.
+Return value of this function is a initial structure \matv{FDTD}. A group of parameters about the algorithm FDTD can be assigned by this function. This group of parameters are about end simulation criteria respectively using time, time-steps (default=1e9) or energy (default=1e-5). Furthermore, Nyquist oversampling of time domain dump, coordinate system and multi-grids \cite{EC_FDTD_CYL_THORSTEN} can be also set by this function.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%% NrTS
     \begin{FontPara}{NrTS} \phantomsection \label{para:NrTS}
     Maximal number of time-steps to simulate (e.g. default=1e9). When the simulation runs to this maximal time-step, the simulation will stop.
@@ -38,17 +38,17 @@ Return value of this function is a initial structure  \matv{FDTD}. A group of pa
 \end{FontDescr}
 
 \begin{FontDescr}{Optional Arguments:}
-%     %%%%%%%%%%%%%%%%%%%%%%%%%%%% FDTD
-%     \begin{FontPara}{FDTD}
-%     The initialized structure for the parameters of the algorithm FDTD. See \matv{FDTD}.
-%     \end{FontPara}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%% FDTD
+% \begin{FontPara}{FDTD}
+% The initialized structure for the parameters of the algorithm FDTD. See \matv{FDTD}.
+% \end{FontPara}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%% MaxTime
     \begin{FontPara}{MaxTime} \phantomsection \label{para:MaxTime}
     Maximal real time in seconds to simulate.
     \end{FontPara}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%% OverSampling
     \begin{FontPara}{OverSampling} \phantomsection \label{para:OverSampling}
-    For Nyquist oversampling of time domain dump. 10 \textasciitilde 20 is recommended. See \cite{Nyquist-Shannon_sampling}. 
+    For Nyquist oversampling of time domain dump. 10 \textasciitilde 20 is recommended. See \cite{Nyquist-Shannon_sampling}.
     \end{FontPara}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%% CoordSystem
     \begin{FontPara}{CoordSystem} \phantomsection \label{para:CoordSystem}
@@ -56,48 +56,48 @@ Return value of this function is a initial structure  \matv{FDTD}. A group of pa
     \end{FontPara}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%% endCrit
     \begin{FontPara}{MultiGrid} \phantomsection \label{para:MultiGrid}
-    \matv{MultiGrid} is a string. It can set   the grids  more homogeneous in direction $\alpha$ for different $\rho$ in cylindrical coordinate system. 
+    \matv{MultiGrid} is a string. It can set the grids more homogeneous in direction $\alpha$ for different $\rho$ in cylindrical coordinate system.
     \end{FontPara}
 \end{FontDescr}
 
 %%%%%%%%%%%%%%%%%%%%% Examples.
-	\begin{FontDescr}{Examples:}
+\begin{FontDescr}{Examples:}
 \begin{itemize}
-\item 
+\item
 \begin{lstlisting}
 % Default initiation with 1e9 as max. timesteps and -50dB as end-criteria
-FDTD = InitFDTD(); 
+FDTD = InitFDTD();
 \end{lstlisting}
 
-\item 
+\item
 \begin{lstlisting}
 % Initiation with 1e6 as max. timesteps and -60dB as end-criteria
 FDTD = InitFDTD(1e6, 1e-6);
 \end{lstlisting}
 
-\item 
+\item
 \begin{lstlisting}
 % Using oversampling and cylindrical coordinate system for FDTD simulation.
 FDTD = InitFDTD(1e6, 1e-6,...
                'CoordSystem', 1,'OverSampling',10);
 \end{lstlisting}
 
-\item 
+\item
 \begin{lstlisting}
 %% An example using multigrids.
 % radius where the number of lines in alpha direction begin to be doupel.
 MultiGrid_Level = [100 400];
 % create comma-separated string
 mg_str = num2str(MultiGrid_Level,'%d,');
-% If the number of lines in alpha direction for rho <= 100 is n_y, then the number for 100 <rho < =400 is 2*n_y and the number for rho > 400  is 2^2*n_y.
+% If the number of lines in alpha direction for rho <= 100 is n_y, then the number for 100 <rho < =400 is 2*n_y and the number for rho > 400 is 2^2*n_y.
 FDTD =InitFDTD('MultiGrid',mg_str(1:end-1),...
                'CoordSystem',1);
 \end{lstlisting}
-\end{itemize}	 
-	\end{FontDescr}
+\end{itemize}	
+\end{FontDescr}
 
 
     %%%%%%%%%%%%%% warning
-	      \warning{ Please don't neglect the left expression '\matv{FDTD}' for the assignment, otherwise \matv{FDTD} will not be updated.}
+\warning{ Please don't neglect the left expression '\matv{FDTD}' for the assignment, otherwise \matv{FDTD} will not be updated.}
 
 % See also: \matv[func:InitCSX]{InitCSX}
